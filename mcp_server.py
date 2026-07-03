@@ -199,8 +199,12 @@ def fetch_st_detail(team_name: str, st_code: str) -> str:
                         results.append(row_dict)
                 return json.dumps(results, ensure_ascii=False)
         except Exception as e:
-            print(f"Google API reading failed for {normalized_code}, falling back to mock: {e}")
-            
+            err_msg = str(e)
+            if "Unable to parse range" in err_msg:
+                print(f"แจ้งเตือน: ไม่พบแผ่นงานย่อย '{normalized_code}' ใน Google Sheets ของ '{team_name}' (ระบบกำลังสลับไปใช้ข้อมูลสำรอง/Mock...)")
+            else:
+                print(f"Google API reading failed for {normalized_code}, falling back to mock: {e}")
+
     mock_data = read_mock_data(team_name, normalized_code)
     return json.dumps(mock_data, ensure_ascii=False)
 
