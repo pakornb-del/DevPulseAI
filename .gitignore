@@ -1,0 +1,33 @@
+# Environment variables (contains sensitive API Keys)
+.env
+
+# Google Cloud service account credentials (contains sensitive private keys)
+credentials.json
+
+# Local database (SQLite) and local data cache
+database/sessions.db
+database/*.db
+
+# Python virtual environments
+.venv/
+venv/
+ENV/
+
+# Python cache and build files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# IDE and OS specific files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Large media assets and video project files
+Video/
+
+# Obsidian settings
+.obsidian/
+**/.obsidian/
